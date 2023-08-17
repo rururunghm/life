@@ -6,4 +6,6 @@ class User::FavoritesController < ApplicationController
   def destroy
   end
   
+  
+  
 end
