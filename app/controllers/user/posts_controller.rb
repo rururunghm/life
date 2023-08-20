@@ -1,12 +1,14 @@
 class User::PostsController < ApplicationController
   
   def index
-  end
-  
-  def show
+    @post = Post.all
   end
   
   def new
+    @post = Post.new
+  end
+  
+  def show
   end
   
   def create

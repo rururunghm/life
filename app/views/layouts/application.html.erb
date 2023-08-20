@@ -8,7 +8,7 @@
 
     <script src="https://kit.fontawesome.com/06d5403368.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%#= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
@@ -24,7 +24,7 @@
             
               <% if user_signed_in? %>
                 <li class="nav-item">
-                  <%= link_to "Mypage", user_path, class: 'nav-link' %>
+                  <%= link_to "Mypage", user_path(current_user), class: 'nav-link' %>
                 </li>
                 
                 <li class="nav-item">

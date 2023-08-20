@@ -27,8 +27,8 @@ class User::UsersController < ApplicationController
     end
   end  
    
-  def post_params
-    params.require(:post).permit(:email, :name, :telephone_number, :is_deleted)  
+  def user_params
+    params.require(:user).permit(:email, :name, :telephone_number, :is_deleted)  
   end
   
 end
