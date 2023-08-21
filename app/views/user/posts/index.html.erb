@@ -1,0 +1,12 @@
+
+<% @posts.each do |posts| %>
+    
+  <%= link_to  post_path(posts.id)  do %>
+　  <%= l posts.created_at, format: :short %>
+　<% end %>
+　
+　<%= posts.body %>
+　<%= link_to "#{posts.comments.count} コメント", post_path(posts.id) %>
+　<%= link_to "削除", post_path(posts.id), method: :delete %>
+　
+<% end %>
