@@ -4,18 +4,25 @@ class User::UsersController < ApplicationController
   before_action :ensure_guest_user, only: [:edit]
   
   def show
+    @user = current_user
   end
 
   def edit
+    @user = current_user
   end
   
   def update
+    @user = current_user
+    @user.update(user_params)
+    redirect_to  user_mypage_path
   end
 
   def complete
+    
   end
   
   def withdrow
+    
   end
   
   private

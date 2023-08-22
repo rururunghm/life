@@ -26,10 +26,14 @@ Rails.application.routes.draw do
       end 
     end
     resources :posts,only: [:index, :show, :new, :create, :destroy] do
+      resource :favorites, only: [:create, :destroy]
       resources :comments,only: [:create, :destroy]
     end
     resources :favorites,only: [:create, :destroy]
   end
+  
+  get "/user/information/edit" => "user/users#edit"
+  get "/user/mypage" => "user/uesrs#show"
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
