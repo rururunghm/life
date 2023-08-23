@@ -18,11 +18,15 @@ class User::UsersController < ApplicationController
   end
 
   def complete
-    
+    @user = current_customer
   end
   
   def withdrow
-    
+    @user = current_user
+    @user.update(is_deleted: true)
+    flash[:notice] = "本当に削除してもよろしいですか？"
+    reset_session
+    redirect_to root_path
   end
   
   private

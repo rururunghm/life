@@ -19,10 +19,15 @@ Rails.application.routes.draw do
 
   scope module: :user do
     root to: "homes#top"
+    resources :searches do
+      collection do
+          get :search
+      end
+    end
     resources :users,only: [:show, :edit, :update] do
       collection do
           patch :withdrow
-          get :complete
+          get   :complete
       end 
     end
     resources :posts,only: [:index, :show, :new, :create, :destroy] do
