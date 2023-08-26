@@ -19,11 +19,6 @@ Rails.application.routes.draw do
 
   scope module: :user do
     root to: "homes#top"
-    resources :searches do
-      collection do
-          get :search
-      end
-    end
     resources :users,only: [:show, :edit, :update] do
       collection do
           patch :withdrow
@@ -37,6 +32,7 @@ Rails.application.routes.draw do
     resources :favorites,only: [:create, :destroy]
   end
   
+  get "/user/search" => "user/searches#search"
   get "/user/information/edit" => "user/users#edit"
   get "/user/mypage" => "user/uesrs#show"
 

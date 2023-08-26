@@ -1,8 +1,12 @@
 # frozen_string_literal: true
 
 class User::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
+  before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  
+  def after_sign_in_path_for(resource)
+     posts_path
+  end
 
   # GET /resource/sign_up
   # def new
@@ -49,6 +53,10 @@ class User::RegistrationsController < Devise::RegistrationsController
   # def configure_account_update_params
   #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
   # end
+  
+  def configure_sign_up_params
+     devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :name, :telephone_number])
+  end
 
   # The path used after sign up.
   # def after_sign_up_path_for(resource)

@@ -3,6 +3,7 @@ class User::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_guest_user, only: [:edit]
   
+  
   def show
     @user = current_user
   end
@@ -41,5 +42,13 @@ class User::UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:email, :name, :telephone_number, :is_deleted)  
   end
+  
+  def ensure_correct_user
+    @user = User.find(params[:id])
+    unless @user == current_user
+      redirect_to user_mypage_path(current_user)
+    end
+  end
+  
   
 end

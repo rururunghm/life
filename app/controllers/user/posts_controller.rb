@@ -33,4 +33,11 @@ class User::PostsController < ApplicationController
     params.require(:post).permit(:user_id, :body, :image)  
   end
   
+  def ensure_correct_user
+    @post = Post.find(params[:id])
+    unless @post.user == current_user
+      redirect_to posts_path
+    end
+  end
+  
 end

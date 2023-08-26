@@ -5,10 +5,15 @@
 
 <div class="container">
       <div class="field">
-        <%= f.label :name %><br />
-        <%= f.email_field :name, autofocus: true, autocomplete: "email" %>
+        <%= f.label :name %><br>
+        <%= f.text_field :name %>
       </div>
       
+      <div class="field">
+        <%= f.label :telephone_number %><br>
+        <%= f.text_field :telephone_number %>
+      </div>
+            
       <div class="field">
         <%= f.label :email %><br />
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
