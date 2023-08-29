@@ -32,16 +32,16 @@ class User::UsersController < ApplicationController
   
   private
   
+  def user_params
+    params.require(:user).permit(:email, :name, :telephone_number, :is_deleted)  
+  end
+  
   def ensure_guest_user
-    @user = User.find(params[:id])
+    @user = current_user
     if @user.name == "guestuser"
       redirect_to user_path(current_user) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
     end
   end  
-   
-  def user_params
-    params.require(:user).permit(:email, :name, :telephone_number, :is_deleted)  
-  end
   
   def ensure_correct_user
     @user = User.find(params[:id])
