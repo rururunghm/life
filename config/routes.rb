@@ -28,6 +28,9 @@ Rails.application.routes.draw do
     resources :posts,only: [:index, :show, :new, :create, :destroy] do
       resource :favorites,only: [:create, :destroy]
       resources :comments,only: [:create, :destroy]
+      collection do
+          get   :others_post
+      end 
     end
     resources :favorites,only: [:create, :destroy]
   end

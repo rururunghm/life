@@ -27,7 +27,7 @@ class User::UsersController < ApplicationController
     @user.update(is_deleted: true)
     flash[:notice] = "本当に削除してもよろしいですか？"
     reset_session
-    redirect_to root_path
+    redirect_to posts_path
   end
   
   private
@@ -39,7 +39,7 @@ class User::UsersController < ApplicationController
   def ensure_guest_user
     @user = current_user
     if @user.name == "guestuser"
-      redirect_to user_path(current_user) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+      redirect_to  user_mypage_path, notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
     end
   end  
   
