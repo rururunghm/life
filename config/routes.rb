@@ -37,7 +37,7 @@ Rails.application.routes.draw do
   
   get "/user/search" => "user/searches#search"
   get "/user/information/edit" => "user/users#edit"
-  get "/user/mypage" => "user/uesrs#show"
+  get "/user/mypage" => "user/users#show"
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

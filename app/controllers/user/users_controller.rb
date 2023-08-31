@@ -19,7 +19,7 @@ class User::UsersController < ApplicationController
   end
 
   def complete
-    @user = current_customer
+    @user = current_user
   end
   
   def withdrow
@@ -30,7 +30,7 @@ class User::UsersController < ApplicationController
     redirect_to posts_path
   end
   
-  private
+   private
   
   def user_params
     params.require(:user).permit(:email, :name, :telephone_number, :is_deleted)  
