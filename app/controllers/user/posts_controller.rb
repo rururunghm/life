@@ -4,6 +4,10 @@ class User::PostsController < ApplicationController
     @posts = Post.all
   end
   
+  def favorite
+   
+  end
+  
   def new
     @post = Post.new
   end

@@ -29,6 +29,7 @@ Rails.application.routes.draw do
       resource :favorites,only: [:create, :destroy]
       resources :comments,only: [:create, :destroy]
       collection do
+          get   :favorite
           get   :others_post
       end 
     end
