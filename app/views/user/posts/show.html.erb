@@ -1,17 +1,7 @@
 
 <%= l @post.created_at, format: :short %>
 <%= @post.body %>
-
-<div>
-  <p>コメント件数：<%= @post.comments.count %></p>
-  <% @post.comments.each do |comment| %>
-    <%= comment.user.name %>
-    <%= l comment.created_at, format: :short %><%= comment.comment %>
-    <% if comment.user == current_user %>
-      <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete %>
-    <% end %>
-
-    <% if @post.favorited_by?(current_user) %>
+   <% if @post.favorited_by?(current_user) %>
     <p>
       <%= link_to post_favorites_path(@post), method: :delete do %>
         ♥<%= @post.favorites.count %> いいね
@@ -24,7 +14,34 @@
       <% end %>
     </p>
     <% end %>
+
+
+<div>
+  <p>コメント件数：<%= @post.comments.count %></p>
+  <% @post.comments.each do |comment| %>
+    <%= comment.user.name %>
+    <%= comment.id %>
+    <%= l comment.created_at, format: :short %><%= comment.comment %>
+    <% if comment.user == current_user %>
+      <%= link_to "削除", comment_path(comment, post_id: comment.post.id), method: :delete %>
+    <% end %>
+     <% if comment.favorited_by?(current_user) %>
+    <p>
+      <%= link_to comment_favorite_path(comment), method: :delete do %>
+        ♥<%= comment.comment_favorites.count %> いいね
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to  comment_comment_favorites_path(comment), method: :post do %>
+        ♡<%=comment.comment_favorites.count %> いいね
+      <% end %>
+    </p>
+    <% end %>
   <% end %>
+
+   
+ 
 </div>
 <div>
   <%= form_with model: [@post, @comment] do |f| %>

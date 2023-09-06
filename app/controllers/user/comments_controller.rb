@@ -12,6 +12,13 @@ class User::CommentsController < ApplicationController
     Comment.find(params[:id]).destroy
     redirect_to post_path(params[:post_id])
   end
+  
+
+ 　def favorite
+
+    @favorite_posts = current_user.favorited_posts
+  
+ 　end
 
   private
    

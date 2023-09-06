@@ -1,6 +1,9 @@
 <p>いいねした投稿一覧</p>
 
-<%#= link_to post.user.name, user_path(post.user.id) %>
+
+ <% @favorite_posts.each do |post| %>
+<%= post.user.name %>
+<%end%>
 
 <%#= post.favorite.length %>
 <%#= link_to post.title, post_path(post.id) %>

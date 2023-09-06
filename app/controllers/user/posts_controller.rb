@@ -5,7 +5,10 @@ class User::PostsController < ApplicationController
   end
   
   def favorite
-   
+    #favorites = Favorite.where(user_id: current_user.id).pluck(:post_id)
+   # @favorite_posts = Post.find(favorites)
+    @favorite_posts = current_user.favorited_posts
+    
   end
   
   def new
@@ -31,6 +34,10 @@ class User::PostsController < ApplicationController
   end
   
   private
+  
+  def set_user
+    @user = User.find(params[:id])
+  end
    
   def post_params
     params.require(:post).permit(:user_id, :body, :image)  

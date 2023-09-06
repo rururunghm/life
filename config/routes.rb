@@ -26,12 +26,19 @@ Rails.application.routes.draw do
       end 
     end
     resources :posts,only: [:index, :show, :new, :create, :destroy] do
-      resource :favorites,only: [:create, :destroy]
-      resources :comments,only: [:create, :destroy]
       collection do
-          get   :favorite
-          get   :others_post
-      end 
+          get :favorite
+          get :others_post
+      end
+      resource :favorites,only: [:create, :destroy]
+      resources :comments,only: [:create, :destroy], shallow: true do 
+        collection do
+          get :favorite
+        end
+         resources :comment_favorites,only: [:create, :destroy] 
+      end
+      
+
     end
     resources :favorites,only: [:create, :destroy]
   end
