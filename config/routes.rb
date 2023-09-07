@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   scope module: :user do
     root to: "homes#top"
-    resources :users,only: [:show, :edit, :update] do
+    resources :users,only: [:index, :show, :edit, :update] do
       collection do
           patch :withdrow
           get   :complete
@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     resources :posts,only: [:index, :show, :new, :create, :destroy] do
       collection do
           get :favorite
-          get :others_post
+          get :my_post
       end
       resource :favorites,only: [:create, :destroy]
       resources :comments,only: [:create, :destroy], shallow: true do 

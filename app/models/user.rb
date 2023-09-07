@@ -20,6 +20,10 @@ class User < ApplicationRecord
   has_many :favorited_posts, through: :favorites, source: :post
   has_many :comment_favorites, dependent: :destroy
   
+  def get_profile_image
+    (profile_image.attached?) ? profile_image : 'no_image.jpg'
+  end
+  
   def self.search_for(content, method)
     if method == 'perfect'
       User.where(name: content)
