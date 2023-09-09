@@ -1,7 +1,9 @@
 <% if @model == 'user' %>
 	<h3>Users search for "<%= @content %>"</h3>
-  <%= render 'users/index', users: @records %>
+  <%= render 'users/index'  %>
 <% elsif @model == 'post' %>
 	<h3>Posts search for "<%= @content %>"</h3>
-  <%= render 'user/posts/post', posts: @records %>
+  <%= render 'user/posts/post' %>
+<% else %>
+  <%= @message %>
 <% end %>
