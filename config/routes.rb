@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 }
 
   namespace :admin do
-    
+    root to: "users#index"
   end
 
   scope module: :user do

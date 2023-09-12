@@ -5,6 +5,9 @@ class Post < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorit_users, through: :favorites, source: :user
   
+  scope :published, -> {where(is_published_flag: true)}
+  scope :unpublished, -> {where(is_published_flag: false)}
+  
   has_one_attached :image
   
   def favorited_by?(user)

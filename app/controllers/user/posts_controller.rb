@@ -2,6 +2,7 @@ class User::PostsController < ApplicationController
   
   def index
     @posts = Post.all
+    @posts = Post.published
   end
   
   def favorite
@@ -40,7 +41,7 @@ class User::PostsController < ApplicationController
   end
    
   def post_params
-    params.require(:post).permit(:user_id, :body, :image)  
+    params.require(:post).permit(:user_id, :body, :image, :is_published_flag)  
   end
   
   def ensure_correct_user
