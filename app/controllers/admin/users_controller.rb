@@ -4,4 +4,12 @@ class Admin::UsersController < ApplicationController
     @users = User.all
   end
   
+  def user_post
+    
+  end
+  
+  def user_comment
+    
+  end
+  
 end

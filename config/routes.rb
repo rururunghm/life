@@ -15,6 +15,12 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: "users#index"
+    resources :users,only: [:index] do
+      collection do
+          get :user_post
+          get :user_comment
+      end 
+    end
   end
 
   scope module: :user do
