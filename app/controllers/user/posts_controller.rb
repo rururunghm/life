@@ -9,6 +9,13 @@ class User::PostsController < ApplicationController
     #favorites = Favorite.where(user_id: current_user.id).pluck(:post_id)
    # @favorite_posts = Post.find(favorites)
     @favorite_posts = current_user.favorited_posts
+  end
+  
+  def my_post
+    @posts = current_user.posts.all
+  end
+  
+  def other_user
     
   end
   
