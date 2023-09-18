@@ -1,13 +1,18 @@
-<% if @posts.present? %>
- <% @posts.each do |item| %>
-    
-  <%= link_to  post_path(item.id)  do %>
-　  <%= l item.created_at, format: :short %>
-　<% end %>
-　
-　<%= item.body %>
-　<%= link_to "#{item.comments.count} コメント", post_path(item.id) %>
-　<%= link_to "削除", post_path(item.id), method: :delete %>
- <% end %>
-<% end %>
-
+<p id="notice"></p>
+<div class="container">
+ <div class="row">
+   
+   <% if @posts.present? %>
+    <% @posts.each do |item| %>
+       
+     <%= link_to  post_path(item.id)  do %>
+   　  <%= l item.created_at, format: :short %>
+   　<% end %>
+   　
+   　<%= item.body %>
+   　<%= link_to "#{item.comments.count} コメント", post_path(item.id) %>
+   　<%= link_to "削除", post_path(item.id), method: :delete %>
+    <% end %>
+   <% end %>
+ </div>
+</div>

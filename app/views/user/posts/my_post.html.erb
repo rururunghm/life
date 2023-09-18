@@ -1,4 +1,4 @@
-<% @posts.each do |item| %>
+<% @my_post.each do |item| %>
     
   <%= link_to  post_path(item.id)  do %>
 　  <%= l item.created_at, format: :short %>

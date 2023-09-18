@@ -12,7 +12,7 @@ class User::PostsController < ApplicationController
   end
   
   def my_post
-    @posts = current_user.posts.all
+    @my_post = current_user.posts.all
   end
   
   def other_user
