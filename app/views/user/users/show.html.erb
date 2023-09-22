@@ -5,8 +5,8 @@
   
   <div class="row my-3">
     <div class="row">
-      <h4>infomation</h4>
-      <div class="col-sm-1"></div>
+      <h4 class="ml-2">infomation</h4>
+    <div class="col-sm-1"></div>
       <%= link_to "edit", user_information_edit_path, class: "btn btn-success" %>
     </div>
   </div>
@@ -14,7 +14,7 @@
   <div class="row">
     
     <div class="w-100"></div>
-    <div class="col-6 col-sm-4 bg-light border py-2">NAME</div>
+    <div class="col-6 col-sm-4 bg-light border py-2">Name</div>
     <div class="col-6 col-sm-6 border py-2"><%= @user.name %></div>
     
     <div class="w-100"></div>
@@ -22,7 +22,7 @@
     <div class="col-6 col-sm-6 border py-2"><%= @user.email %></div>
     
     <div class="w-100"></div>
-    <div class="col-6 col-sm-4 bg-light border py-2">TEL</div>
+    <div class="col-6 col-sm-4 bg-light border py-2">Tel</div>
     <div class="col-6 col-sm-6 border py-2"><%= @user.telephone_number %></div>
   </div>
 </div>

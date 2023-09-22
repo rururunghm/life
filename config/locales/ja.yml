@@ -3,3 +3,10 @@ ja:
     formats:
       default: "%Y/%m/%d %H:%M:%S"
       short: "%m/%d %H:%M"
+  activerecord:
+    models:
+      post: 投稿
+    attributes:
+      post:
+        body: 本文
+        is_published_flag: 公開/非公開

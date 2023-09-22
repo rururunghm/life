@@ -8,6 +8,9 @@ class Post < ApplicationRecord
   scope :published, -> {where(is_published_flag: true)}
   scope :unpublished, -> {where(is_published_flag: false)}
   
+  validates :body, presence: true
+  validates :is_published_flag, presence: true
+  
   has_one_attached :image
   
   def favorited_by?(user)
