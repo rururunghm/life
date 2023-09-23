@@ -29,13 +29,13 @@ Rails.application.routes.draw do
       collection do
           patch :withdrow
           get   :complete
+          get  :other_user
       end 
     end
     resources :posts,only: [:index, :show, :new, :create, :destroy] do
       collection do
           get :favorite
           get :my_post
-          get :other_user
       end
       resource :favorites,only: [:create, :destroy]
       resources :comments,only: [:create, :destroy], shallow: true do 

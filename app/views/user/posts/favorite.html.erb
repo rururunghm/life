@@ -1,9 +1,19 @@
-<p>いいねした投稿一覧</p>
-
-
- <% @favorite_posts.each do |post| %>
-<%= post.user.name %>
-<%end%>
-
-<%#= post.favorite.length %>
-<%#= link_to post.title, post_path(post.id) %>
+<p id="notice"></p>
+<div class="container">
+  <div><h3>Favorite</h3></div>
+  <div class="row mt-3">
+    <% @favorite_posts.each do |item| %>
+      <div class="col-2">    
+        <%= link_to  post_path(item.id) do %>
+      　  <%= l item.created_at, format: :short %>
+      　<% end %>
+      </div>
+      <div class="col-6 text-wrap">   
+      　<%= item.body %>
+      </div>
+      <div class="col-2">   
+      　<%= link_to "#{item.comments.count} コメント", post_path(item.id), class: "text-secondary text-offset-2 text-underline-opacity-25 text-underline-opacity-100-hover" %>
+      </div>
+    <% end %>
+  </div>
+</div>

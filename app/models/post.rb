@@ -11,7 +11,6 @@ class Post < ApplicationRecord
   validates :body, presence: true
   validates :is_published_flag, presence: true
   
-  has_one_attached :image
   
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)

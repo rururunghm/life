@@ -12,11 +12,7 @@ class User::PostsController < ApplicationController
   end
   
   def my_post
-    @my_post = current_user.posts.all
-  end
-  
-  def other_user
-    
+    @my_post = current_user.posts
   end
   
   def new
@@ -51,7 +47,7 @@ class User::PostsController < ApplicationController
   end
    
   def post_params
-    params.require(:post).permit(:user_id, :body, :image, :is_published_flag)  
+    params.require(:post).permit(:user_id, :body, :is_published_flag)  
   end
   
   def ensure_correct_user

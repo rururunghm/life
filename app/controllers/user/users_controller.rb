@@ -15,6 +15,11 @@ class User::UsersController < ApplicationController
     @user = current_user
   end
   
+  def other_user
+    @user = User.find(params[:id])
+  end
+  
+  
   def update
     @user = current_user
     @user.update(user_params)
@@ -36,7 +41,7 @@ class User::UsersController < ApplicationController
    private
   
   def user_params
-    params.require(:user).permit(:email, :name, :telephone_number, :is_deleted)  
+    params.require(:user).permit(:email, :name, :telephone_number, :is_deleted, :image)  
   end
   
   def ensure_guest_user

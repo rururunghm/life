@@ -5,11 +5,11 @@ class Admin::UsersController < ApplicationController
   end
   
   def user_post
-    
+    @user = current_user
   end
   
   def user_comment
-    
+    @user = current_user
   end
   
 end

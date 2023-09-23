@@ -14,14 +14,20 @@ class User < ApplicationRecord
     end
   end
   
+  has_one_attached :image
+  
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorited_posts, through: :favorites, source: :post
   has_many :comment_favorites, dependent: :destroy
   
-  def get_profile_image
-    (profile_image.attached?) ? profile_image : 'no_image.jpg'
+  def image(width, height)
+    unless image.attached?
+      file_path = Rails.root.join('app/assets/images/sample-author1.jpg')
+      image.attach(io: File.open(file_path), filename: 'no_image.jpg', content_type: 'image/jpeg')
+    end
+    image.variant(resize_to_limit: [width, height]).processed
   end
   
   def self.search_for(content, method)

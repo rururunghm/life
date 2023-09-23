@@ -15,7 +15,7 @@
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
           <div class="mr-auto col-4">
-            <a class="navbar-brand p-3 " href="/"><%= image_tag '葉っぱアイコン.png', size: '50x50' %></a>
+            <a class="navbar-brand" href="/"><%= image_tag 'Life.jpg', size: '80x80' %></a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -86,7 +86,7 @@
         <ul class = "d-flex justify-content-center align-self-center mb-0 shadow p-3 mb-5 bg-white rounded">
         <% if user_signed_in? %>
                 <li>
-                  <%= link_to user_mypage_path, class: 'nav-link text-secondary' do %>
+                  <%= link_to posts_path, class: 'nav-link text-secondary' do %>
                     <i class="fas fa-home" aria-hidden="true"></i> Home
                   <% end %>
                 </li>
@@ -98,7 +98,7 @@
                 </li>
                 
                 <li>
-                  <%= link_to posts_path, class: 'nav-link text-secondary' do %>
+                  <%= link_to  my_post_posts_path, class: 'nav-link text-secondary' do %>
                     <i class="fas fa-user-circle" aria-hidden="true"></i> My Post
                   <% end %>
                 </li>
