@@ -1,14 +1,13 @@
 <div class="container text-center">
 
     
-  <h3 class="mt-5"><strong>本当に退会しますか？</strong></h3></br>
-  <h5>退会すると、会員登録情報や</br>
-  これまでの購入履歴が閲覧できなくなります。</br>
-  退会する場合は、「退会する」をしてください。</h5></br>
+  <h3 class="mt-5"><strong>本当に削除しますか？</strong></h3></br>
+  <h5>削除すると、すべてのデータがなくなります。</br>
+  削除する場合は、「削除する」を押してください。</h5></br>
   
-  <%= link_to "退会しない", user_mypage_path, class:"btn btn-success ml-3" %>
+  <%= link_to "削除しない", user_mypage_path, class:"btn btn-success ml-3" %>
         
-  <%= link_to "退会する", withdrow_users_path, method: :patch , class:"btn btn-danger ml-3", data: { confirm: "【確認】アカウントを削除してもよろしいですか？" } %>
+  <%= link_to "削除する", withdrow_users_path, method: :patch , class:"btn btn-danger ml-3", data: { confirm: "【確認】アカウントを削除してもよろしいですか？" } %>
   
   
 </div>

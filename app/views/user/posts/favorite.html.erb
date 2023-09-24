@@ -1,19 +1,27 @@
 <p id="notice"></p>
 <div class="container">
-  <div><h3>Favorite</h3></div>
-  <div class="row mt-3">
+  <div class="mb-4"><h2>Favorite</h2></div>
     <% @favorite_posts.each do |item| %>
-      <div class="col-2">    
-        <%= link_to  post_path(item.id) do %>
-      　  <%= l item.created_at, format: :short %>
-      　<% end %>
+    <div class="row card-shadow w-75">
+      <div class="col-2">profile</div>
+      <div class="col-8">
+        <div class="row">
+          <div class="col font-weight-bold"><%= item.user.name %></div>
+          <div class="col"><time><%= l DateTime.current, format: :short %></time></div>
+          <div class="col"><%= link_to "削除", post_path(item.id), method: :delete %></div>
+        </div>
+        <div><%= item.body %></div>
+        <div class="row">
+          <div class="col">
+            <%= link_to post_path(item.id) do %>
+              <i class="fa-regular fa-comment"></i>
+            <% end %>
+          </div>
+          <div class="col">
+            
+          </div>
+        </div>
       </div>
-      <div class="col-6 text-wrap">   
-      　<%= item.body %>
-      </div>
-      <div class="col-2">   
-      　<%= link_to "#{item.comments.count} コメント", post_path(item.id), class: "text-secondary text-offset-2 text-underline-opacity-25 text-underline-opacity-100-hover" %>
-      </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>

@@ -32,13 +32,11 @@
                   <i class="fas fa-user" aria-hidden="true"></i>Mypage
                 <% end %>
               </li>
-              
               <li class="nav-item">
                 <%= link_to new_post_path, class: 'nav-link' do %>
                   <i class="fas fa-plus" aria-hidden="true"></i>New
                 <% end %>
               </li>
-              
               <li class="nav-item">
                 <%= link_to "Log-out", destroy_user_session_path, method: :delete, class: 'nav-link' %>
               </li>
@@ -47,28 +45,22 @@
               <li class="nav-item">
                 <%= link_to "ユーザ一覧",  admin_root_path, class: 'nav-link' %>
               </li>
-              
               <li class="nav-item">
                 <%#= link_to "コメント管理", admin_customers_path, class: 'nav-link' %>
               </li>
-              
               <li class="nav-item">
                 <%#= link_to "投稿管理", admin_customers_path, class: 'nav-link' %>
               </li>
-              
               <li class="nav-item">
                 <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link' %>
               </li>
-              
             <% else %>
               <li class="nav-item">
                 <%= link_to "Top", root_path, class: 'nav-link' %>
               </li>
-                
               <li class="nav-item">
                 <%= link_to "Sign-up", new_user_registration_path, class: 'nav-link' %>
               </li>
-              
               <li class="nav-item">
                 <%= link_to "Log-in", new_user_session_path, class: 'nav-link' %>
               </li>
@@ -90,15 +82,13 @@
                     <i class="fas fa-home" aria-hidden="true"></i> Home
                   <% end %>
                 </li>
-                
                  <li>
                   <%= link_to favorite_posts_path(), class: 'nav-link text-secondary' do %>
                     <i class="fas fa-heart" aria-hidden="true"></i> Fovorite
                   <% end %>
                 </li>
-                
                 <li>
-                  <%= link_to  my_post_posts_path, class: 'nav-link text-secondary' do %>
+                  <%= link_to my_post_posts_path, class: 'nav-link text-secondary' do %>
                     <i class="fas fa-user-circle" aria-hidden="true"></i> My Post
                   <% end %>
                 </li>

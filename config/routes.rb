@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 
   scope module: :user do
     root to: "homes#top"
-    resources :users,only: [:index, :show, :edit, :update] do
+    resources :users,only: [:show, :edit, :update] do
       collection do
           patch :withdrow
           get   :complete

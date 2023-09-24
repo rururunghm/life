@@ -1,21 +1,27 @@
 <p id="notice"></p>
 <div class="container">
-  <div class="row">
-    <% @my_post.each do |item| %>
-      <div class="col-2">
-        <%= link_to  post_path(item.id) do %>
-          <%= l item.created_at, format: :short %>
-        <% end %>
-    　</div>
-    　<div class="col-6">
-    　  <%= item.body %>
-    　</div>
-    　<div class="col-2">
-    　  <%= link_to "#{item.comments.count} コメント", post_path(item.id) %>
-    　</div>
-    　<div class="col-2">
-    　  <%= link_to "削除", post_path(item.id), method: :delete %>
-    　</div>
-    <% end %>
-  </div>
+  <div class="mb-4 "><h2>My post</h2></div>
+  <% @post.each do |item| %>
+    <div class="row card-shadow w-75">
+      <div class="col-2">profile</div>
+      <div class="col-8">
+        <div class="row">
+          <div class="col font-weight-bold"><%= item.user.name %></div>
+          <div class="col"><time><%= l DateTime.current, format: :short %></time></div>
+          <div class="col"><%= link_to "削除", post_path(item.id), method: :delete %></div>
+        </div>
+        <div><%= item.body %></div>
+        <div class="row">
+          <div class="col">
+            <%= link_to post_path(item.id) do %>
+              <i class="fa-regular fa-comment"></i>
+            <% end %>
+          </div>
+          <div class="col">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>

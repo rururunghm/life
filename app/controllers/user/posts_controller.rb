@@ -12,7 +12,8 @@ class User::PostsController < ApplicationController
   end
   
   def my_post
-    @my_post = current_user.posts
+    @post = current_user.posts
+    
   end
   
   def new

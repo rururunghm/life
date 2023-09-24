@@ -22,9 +22,9 @@ class User < ApplicationRecord
   has_many :favorited_posts, through: :favorites, source: :post
   has_many :comment_favorites, dependent: :destroy
   
-  def image(width, height)
+  def get_profile_image(width, height)
     unless image.attached?
-      file_path = Rails.root.join('app/assets/images/sample-author1.jpg')
+      file_path = Rails.root.join('app/assets/images/no_image.jpg')
       image.attach(io: File.open(file_path), filename: 'no_image.jpg', content_type: 'image/jpeg')
     end
     image.variant(resize_to_limit: [width, height]).processed

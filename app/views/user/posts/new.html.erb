@@ -1,5 +1,6 @@
+<p id="notice"></p>
 <div class="container">
-  <div class="row">
+  <div class="mb-4"><h2>New post</h2></div>
     <% if @post.errors.any? %>
       <%= @post.errors.count %>件のエラーが発生しました
       <ul>
@@ -8,15 +9,24 @@
         <% end %>
       </ul>
     <% end %>
-      <div class="col mt-5">
-        <%= form_with model: @post do |f| %>
-          <%= f.text_area :body %>
-          <%= f.submit 'Post' %>
-          <%= f.label :is_published_flag, "公開", value: true %>
-          <%= f.radio_button :is_published_flag, 'true' %>
-          <%= f.label :is_published_flag, "非公開", value: false %>
-          <%= f.radio_button :is_published_flag, 'false' %>
-        <% end %>
-      </div>
-  </div>
+    <%= form_with model: @post do |f| %>
+    <div class="row">
+        <div class="col-2">icon</div>
+        <div>
+          <div class="row">
+            <div class="col">
+              <%= f.label :is_published_flag, "公開", value: true %>
+              <%= f.radio_button :is_published_flag, 'true' %>
+            </div>
+            <div class="col">
+              <%= f.label :is_published_flag, "非公開", value: false %>
+              <%= f.radio_button :is_published_flag, 'false' %>
+            </div>
+          </div>
+          <div class="col my-3"><%= f.text_area :body %></div>
+          <div class="col"><%= f.submit 'Post', class:"btn btn-primary" %></div>
+        </div>
+    </div>
+  <% end %>  
 </div>
+

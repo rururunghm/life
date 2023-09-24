@@ -1,26 +1,20 @@
+<p id ="notice"></p>
 <div class="container">
-  <p id ="notice"></p>
-  
-  <div class="col-sm-2 text-dark bg-light text-center mb-4 ml-5"><h4>mypage</h4></div>
-  
-  <div class="row my-3">
-    <div class="row">
-      <h4 class="ml-5">infomation</h4>
-      
-    <div class="col-sm-1"></div>
-      <%= link_to "edit", user_information_edit_path, class: "btn btn-success" %>
+  <div class="row">
+    <div class="col-sm-2 text-center mb-4 ml-5"><h3>mypage</h3></div>
+    <div class="col">  
+      <% if current_user.name != "guestuser" %>
+        <%= link_to user_information_edit_path, class: "btn btn-success" do %>
+          <i class="fa-solid fa-user-gear" aria-hidden="true"></i>
+        <% end %>
+      <% end %>
     </div>
   </div>
-
   <div class="row ml-5">
     <div class="w-100"></div>
     <div class="col-2 bg-light border py-2">Image</div>
     <div class="col-3 border py-2">
-      <% if @user.image.attached? %>
-        <%= image_tag @user.image, size: "100x100" %>
-      <% else %>
-        <%= image_tag 'no_image', size: "100x100" %>
-      <% end %>
+      <%= image_tag @user.get_profile_image(200,200), size: "100x100" %>
     </div>
     <div class="w-100"></div>
     <div class="col-2 bg-light border py-2">Name</div>
