@@ -5,6 +5,8 @@ class User::UsersController < ApplicationController
   
   def index
     @users = User.all
+    @user = User.find(params[:id])
+    @post = @user.post.bo
   end
   
   def show
@@ -16,7 +18,7 @@ class User::UsersController < ApplicationController
   end
   
   def other_user
-    @user = User.find(params[:id])
+    @post = Post.all
   end
   
   

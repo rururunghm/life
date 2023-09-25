@@ -1,3 +1,34 @@
-<% @user.each do |user| %>
-   <%= user.name %>
+<% @post.each do |item| %>
+   <%= item.user.name %>
 <% end %>
+
+<p id="notice"></p>
+<div class="container">
+  <% @post.each do |item| %>
+    <div class="row card-shadow w-75">
+      <div class="col-2">
+        <%= link_to post_path(item.id) do %>
+        <%#= image_tag item.user.image, size: "50x50" %>
+        <% end %>
+      </div>
+      <div class="col-8">
+        <div class="row">
+          <div class="col font-weight-bold"><%= item.user.name %></div>
+          <div class="col"><time><%= l DateTime.current, format: :short %></time></div>
+          <div class="col"><%= link_to "削除", post_path(item.id), method: :delete %></div>
+        </div>
+        <div><%= item.body %></div>
+        <div class="row">
+          <div class="col">
+            <%= link_to post_path(item.id) do %>
+              <i class="fa-regular fa-comment"></i>
+            <% end %>
+          </div>
+          <div class="col">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
