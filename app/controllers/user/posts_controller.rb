@@ -22,9 +22,6 @@ class User::PostsController < ApplicationController
   
   def other_user
     # ほかのユーザの投稿表示画面
-#    @users = User.all
-#    @post = Post.find(params[:id])
-
     @user = User.find(params[:id])
 
   end

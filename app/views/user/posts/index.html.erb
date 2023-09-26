@@ -14,7 +14,11 @@
         <div class="row">
           <div class="col font-weight-bold"><%= item.user.name %></div>
           <div class="col"><time><%= l DateTime.current, format: :short %></time></div>
-          <div class="col"><%= link_to "削除", post_path(item.id), method: :delete %></div>
+          <div class="col">
+            <% if item.user == current_user %>
+              <%= link_to "削除", post_path(item.id), method: :delete %>
+            <% end %>
+          </div>
         </div>
         <div><%= item.body %></div>
         <div class="row">
@@ -23,18 +27,18 @@
               <i class="fa-regular fa-comment"></i>
             <% end %>
           </div>
+          <!--いいね機能-->
           <div class="col">
-            <!--いいね機能-->
             <% if item.favorited_by?(current_user) %>
           <p>
             <%= link_to post_favorites_path(item), method: :delete do %>
-              ♥<%= item.favorites.count %> いいね
+              ♥<%= item.favorites.count %>
             <% end %>
           </p>
           <% else %>
           <p>
             <%= link_to post_favorites_path(item), method: :post do %>
-              ♡<%= item.favorites.count %> いいね
+              ♡<%= item.favorites.count %>
             <% end %>
           </p>
           <% end %>

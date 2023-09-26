@@ -1,6 +1,5 @@
 <p id="notice"></p>
 <div class="container">
-  <%# @users.each do |item| #%>
     <div class="row card-shadow w-75">
       <div class="col-2">
         <%= image_tag @user.get_profile_image(200,200), size: "80x80" %>
@@ -9,9 +8,8 @@
         <div class="row">
           <div class="col font-weight-bold"><%= @user.name %></div>
           <div class="col"><time><%= l DateTime.current, format: :short %></time></div>
-          <div class="col"><%#= link_to "削除", post_path(item.id), method: :delete #%></div>
+          <div class="col"></div>
         </div>
-
         <% @user.posts.each do |item| %>
         <div><%= item.body %></div>
         <div class="row">
@@ -21,10 +19,22 @@
             <% end %>
           </div>
           <div class="col">
+            <% if item.favorited_by?(current_user) %>
+            <p>
+              <%= link_to post_favorites_path(item), method: :delete do %>
+                ♥<%= item.favorites.count %>
+              <% end %>
+            </p>
+            <% else %>
+            <p>
+              <%= link_to post_favorites_path(item), method: :post do %>
+                ♡<%= item.favorites.count %>
+              <% end %>
+            </p>
+            <% end %>
           </div>
         </div>
         <% end %>
       </div>
     </div>
-  <%# end #%>
 </div>

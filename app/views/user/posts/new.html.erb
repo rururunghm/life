@@ -10,10 +10,13 @@
         <% end %>
       </ul>
     <% end %>
-    <%= form_with model: @post do |f| %>
+    
     <div class="row">
-        <div class="col-2">icon</div>
+        <div class="col-2">
+          <%= image_tag current_user.image, size: "80x80" %>
+        </div>
         <div>
+          <%= form_with model: @post do |f| %>
           <div class="row">
             <div class="col">
               <%= f.label :is_published_flag, "公開", value: true %>
@@ -27,7 +30,8 @@
           <div class="col my-3"><%= f.text_area :body %></div>
           <div class="col"><%= f.submit 'Post', class:"btn btn-primary" %></div>
         </div>
+        <% end %>
     </div>
-  <% end %>  
+    
 </div>
 
