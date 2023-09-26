@@ -3,36 +3,37 @@ class User::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_guest_user, only: [:edit]
   
-  def index
-    @users = User.all
-    @user = User.find(params[:id])
-    @post = @user.post.bo
-  end
-  
   def show
+    # マイページ
     @user = current_user
   end
 
   def edit
-    @user = current_user
+    # マイページ編集画面
+    unless @user == current_user
+     redirect_to  user_mypage_path(@user)
+    end
   end
-  
-  def other_user
-    @post = Post.all
-  end
-  
   
   def update
+    # 編集更新
     @user = current_user
-    @user.update(user_params)
-    redirect_to  user_mypage_path
+    if current_user.update(user_params)
+      flash[:notice] = "「 更新しました 」"
+      redirect_to user_mypage_path(@user)
+    else
+      flash[:notice] = "「 更新できませんでした 」"
+      redirect_to user_information_edit_path(@user)
+    end
   end
 
   def complete
+    # アカウント削除画面
     @user = current_user
   end
   
   def withdrow
+    # アカウント削除実行
     @user = current_user
     @user.update(is_deleted: true)
     flash[:notice] = "本当に削除してもよろしいですか？"

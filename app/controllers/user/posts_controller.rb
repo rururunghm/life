@@ -1,27 +1,43 @@
 class User::PostsController < ApplicationController
   
   def index
+    # 皆の投稿表示画面
     @posts = Post.all
+    @user = current_user
     @posts = Post.published
+    
   end
   
   def favorite
+    # いいね画面
     #favorites = Favorite.where(user_id: current_user.id).pluck(:post_id)
    # @favorite_posts = Post.find(favorites)
     @favorite_posts = current_user.favorited_posts
   end
   
   def my_post
+    # 自分の投稿表示画面
     @post = current_user.posts
-    
+  end
+  
+  def other_user
+    # ほかのユーザの投稿表示画面
+#    @users = User.all
+#    @post = Post.find(params[:id])
+
+    @user = User.find(params[:id])
+
   end
   
   def new
+    # 新規投稿
     @post = Post.new
   end
   
   def show
+    # コメント投稿画面
     @post = Post.find(params[:id])
+    @user = current_user
     @comment = Comment.new
   end
   

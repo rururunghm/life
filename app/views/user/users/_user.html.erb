@@ -30,7 +30,7 @@
     </div>
 <% end %>
 <% @users.each do |users| %>
-  <%= link_to other_user_users_path(@user) do %>
+  <%= link_to other_user_posts_path(users.id) do %>
    <%= users.name %>
   <% end %>
 <% end %>

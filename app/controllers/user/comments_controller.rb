@@ -1,6 +1,7 @@
 class User::CommentsController < ApplicationController
   
   def create
+  
     post = Post.find(params[:post_id])
     comment = current_user.comments.new(comment_params)
     comment.post_id = post.id
@@ -13,12 +14,11 @@ class User::CommentsController < ApplicationController
     redirect_to post_path(params[:post_id])
   end
   
-
- 　def favorite
-
+  def favorite
+  
     @favorite_posts = current_user.favorited_posts
   
- 　end
+  end
 
   private
    

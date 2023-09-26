@@ -22,6 +22,10 @@ class User < ApplicationRecord
   has_many :favorited_posts, through: :favorites, source: :post
   has_many :comment_favorites, dependent: :destroy
   
+  validates :name, presence: true
+  validates :telephone_number, presence: true
+  validates :email, presence: true
+  
   def get_profile_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')

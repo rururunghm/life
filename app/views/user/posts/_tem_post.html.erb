@@ -1,11 +1,11 @@
 <p id="notice"></p>
 <div class="container">
-<div class="mb-4 "><h2>My post</h2></div>
-  <%#= render 'tem_post', post: @post %>
-  <% @post.each do |item| %>
+  <% post.each do |item| %>
     <div class="row card-shadow w-75">
       <div class="col-2">
+        <%= link_to post_path(item.id) do %>
         <%= image_tag item.user.image, size: "80x80" %>
+        <% end %>
       </div>
       <div class="col-8">
         <div class="row">

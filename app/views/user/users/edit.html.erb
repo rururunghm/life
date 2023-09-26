@@ -1,20 +1,22 @@
 <div class="container">
   <p id ="notice"></p>
-
+  <div>
+    <%= flash[:notice] %>
+  </div>
   <%= form_with model: @user, url: user_path(current_user) do |f| %>
     <div class="field">
       <div class="row">
         <div class="col-sm-4">
         <%= f.label "Image", class: "col-form-label" %>
         </div>
-        <div class="col-sm-1"><%= image_tag @user.image, size: "50x50" %></div>
+        <div class="col-sm-2"><%= image_tag @user.get_profile_image(200,200), size: "80x80" %></div>
         <div class="col-sm-3">
         <%= f.file_field :image, placeholder: "プロフィール画像", accept: "image/*", class: 'form-control-sm ' %>
         </div>
       </div>
     </div>
     
-    <div class="field">
+    <div class="field mt-3">
       <div class="row">
         <div class="col-sm-4">
         <%= f.label "Name", class: "col-form-label" %>
@@ -26,7 +28,7 @@
       </div>
     </div>
        
-    <div class="field">
+    <div class="field mt-3">
       <div class="row">
         <div class="col-sm-4">
         <%= f.label "Tel", class: "col-form-label" %>
@@ -38,7 +40,7 @@
       </div>
     </div>
     
-     <div class="field">
+     <div class="field mt-3">
       <div class="row">
         <div class="col-sm-4">
         <%= f.label "E-mail" , class: "col-form-label" %>
@@ -50,7 +52,7 @@
       </div>
     </div>
     
-    <div class="actions text-center">
+    <div class="actions text-center mt-3">
         <%= f.submit "編集内容を保存", class:"btn btn-success" %>
         <%= link_to "削除する", complete_users_path , data: { confilm: "本当に削除しますか？" }, class:"btn btn-danger ml-3" %>
     </div>
