@@ -1,12 +1,13 @@
+
 <div class="container">
   <p id ="notice"></p>
-    <h4 class="text-dark bg-light w-25 text-center mb-y">会員一覧</h4>
+    <h4 class="text-dark bg-light w-25 text-center mb-y">ユーザ一覧</h4>
     
     
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">会員ID</th>
+          <th scope="col">ユーザID</th>
           <th scope="col">氏名</th>
           <th scope="col">メールアドレス</th>
           <th scope="col">ステータス</th>
@@ -27,7 +28,7 @@
           <td><% if user.is_deleted == false %>
               有効
               <% else %>
-              退会
+              削除
               <% end %>
           </td>
         </tr>

@@ -1,32 +1,28 @@
+<p id="notice"></p>
 <div class="container">
-  <p id ="notice"></p>
-    <h4 class="text-dark bg-light w-25 text-center mb-y">会員一覧</h4>
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">会員ID</th>
-          <th scope="col">氏名</th>
-          <th scope="col">メールアドレス</th>
-          <th scope="col">ステータス</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @users.each do |user| %>
-        <tr>
-          <td><%= user.id %></td>
-          <td><%#= link_to  admin_customer_path(customer.id)  do %>
-            <%= user.name %>
-            <%# end %>
-          </td>
-          <td><%= user.email  %></td>
-          <td><% if user.is_deleted == false %>
-              有効
-              <% else %>
-              退会
-              <% end %>
-          </td>
-        </tr>
+  <div><%= flash[:notice] %></div>
+  <div class="mb-4"><h2>ユーザ投稿一覧</h2></div>
+  <% if @posts.present? %>
+  <!--@postが存在すればtrue-->
+  <% @posts.each do |item| %>
+    <div class="row card-shadow w-75">
+      <div class="col-sm-2">
+        <%= link_to other_user_posts_path(item.user.id) do %>
+        <%= image_tag item.user.get_profile_image(200,200), size: "80x80" %>
         <% end %>
-      </tbody>
-    </table>
+      </div>
+      <div class="col-sm">
+        <div class="row">
+          <div class="col-sm font-weight-bold"><%= item.user.name %></div>
+          <div class="col-sm"><time><%= l DateTime.current, format: :short %></time></div>
+          <div class="col-sm">
+              <%= link_to "削除", post_path(item.id), method: :delete %>
+          </div>
+        </div>
+        <div><%= item.body %></div>
+      </div>
+    </div>
+  <% end %>
+  <% end %>
 </div>
+

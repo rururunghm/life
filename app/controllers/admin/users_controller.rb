@@ -5,7 +5,7 @@ class Admin::UsersController < ApplicationController
   end
   
   def user_post
-    @post = current_user
+    @posts = Post.all
   end
   
   def user_comment

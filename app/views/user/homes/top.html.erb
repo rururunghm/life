@@ -1,11 +1,15 @@
-<div class="btn-wrapper col-10 mx-auto">
-    <div class="row">
+<p id ="notice"></p>
+<div class="container-sm">
+  <div class="col mx-auto text-center mt-5">
+    <%= image_tag 'R.jfif', size: "300x250"  %>
+  </div>
+    <div class="col-sm-4 mx-auto mt-5">
         <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
      </div>
-     <div class="row">
-          <%= link_to 'Log in',new_user_session_path, class: "btn btn-info btn-sm btn-block mb-3 sign_in" %>
+     <div class="col-sm-4 mx-auto">
+          <%= link_to 'Log in', new_user_session_path, class: "btn btn-info btn-sm btn-block mb-3 sign_in" %>
       </div>
-      <div class="row">
-          <%= link_to 'Sign Up',new_user_registration_path, class: "btn btn-success btn-sm btn-block sign_up" %>
+      <div class="col-sm-4 mx-auto">
+          <%= link_to 'Sign Up', new_user_registration_path, class: "btn btn-success btn-sm btn-block sign_up" %>
       </div>
-    </div>
+</div>
