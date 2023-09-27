@@ -1,0 +1,20 @@
+<p id ="notice"></p>
+<div class="container">
+  <div class="row card-shadow w-75">
+    <% @comment.each do |comment| %>
+      <div class="col-2">
+        <%= image_tag comment.user.get_profile_image(200,200), size: "80x80" %>
+      </div>
+      <div class="col-8">
+        <div class="row">
+          <div class="col font-weight-bold"><%= comment.user.name %></div>
+          <div class="col"><time><%= l DateTime.current, format: :short %></time></div>
+          <div class="col">
+              <%= link_to "削除", comment_path(comment, post_id: comment.post.id), method: :delete %>
+          </div>
+        </div>
+          <div class="mt-2"><%= comment.comment %></div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,5 +1,6 @@
 <p id="notice"></p>
 <div class="container">
+  <div><%= flash[:notice] %></div>
   <div class="mb-4"><h2>Home</h2></div>
   <% if @posts.present? %>
   <!--@postが存在すればtrue-->
