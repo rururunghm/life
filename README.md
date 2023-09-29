@@ -1,24 +1,33 @@
-# README
+# <!--Life-->
+​
+## サイト概要
+### サイトテーマ
+自分の日常や思い出を発信する、記録を残すコミュニティサイト
+​
+### テーマを選んだ理由
+仲のいい人達の日常を知りたくてSNSをしていましたが、Twitterなどはおすすめで必要のない情報が流れてくることがありました。</br>
+私の周辺でも同じように、自分の日常を発信できて、仲のいい人たちの情報だけを知りたいという人が多く、実際にそのようなサイトがあれば楽しいのではないかと考えました。</br>
+また、同じ価値観や興味がある人だけをグループに入れることによって、個人のオリジナルのサイトを作れるのではないかと考え、このテーマにしました。</br>
+​
+### ターゲットユーザ
+- 日常の記録をしたい人
+- 自分の価値観、考えを共有、発信したい人
+​
+### 主な利用シーン
+- 自分の思い出や、出来事を写真や文章で残したい時
+- 情報や意見を交換、知りたい時	
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+​
+## 設計書
+後ほど作成予定
+​
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
+​
+## 使用素材
+- ロゴ作成で以下を使用
+  - hatchful（https://www.shopify.com/jp/tools/logo-maker）
