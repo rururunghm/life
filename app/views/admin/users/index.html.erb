@@ -2,8 +2,6 @@
 <div class="container">
   <p id ="notice"></p>
     <h4 class="text-dark bg-light w-25 text-center mb-y">ユーザ一覧</h4>
-    
-    
     <table class="table">
       <thead>
         <tr>
@@ -13,18 +11,13 @@
           <th scope="col">ステータス</th>
         </tr>
       </thead>
-      
-      
-      
       <tbody>
         <% @users.each do |user| %>
         <tr>
           <td><%= user.id %></td>
-          <td><%#= link_to  admin_customer_path(customer.id)  do %>
-            <%= user.name %>
-            <%# end %>
-          </td>
+          <td><%= user.name %></td>
           <td><%= user.email  %></td>
+          <!--アカウントの状態表示-->
           <td><% if user.is_deleted == false %>
               有効
               <% else %>

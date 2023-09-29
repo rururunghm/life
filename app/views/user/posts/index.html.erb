@@ -4,50 +4,53 @@
   <div class="mb-4"><h2>Home</h2></div>
   <% if @posts.present? %>
   <!--@postが存在すればtrue-->
-  <% @posts.each do |item| %>
-    <div class="row card-shadow w-75">
-      <div class="col-2">
-        <%= link_to other_user_posts_path(item.user.id) do %>
-        <%= image_tag item.user.get_profile_image(200,200), size: "80x80" %>
-        <% end %>
-      </div>
-      <div class="col-8">
-        <div class="row">
-          <div class="col font-weight-bold"><%= item.user.name %></div>
-          <div class="col"><time><%= l DateTime.current, format: :short %></time></div>
-          <div class="col">
-            <% if item.user == current_user %>
-              <%= link_to "削除", post_path(item.id), method: :delete %>
+      <% @posts.each do |item| %>
+        <div class="row card-shadow w-75">
+          <div class="col-2">
+            <!--アイコン表示-->
+            <%= link_to other_user_posts_path(item.user.id) do %>
+            <%= image_tag item.user.get_profile_image(200,200), size: "80x80" %>
             <% end %>
+          </div>
+          <div class="col-8">
+            <div class="row">
+              <div class="col font-weight-bold"><%= item.user.name %></div>
+              <div class="col"><time><%= l DateTime.current, format: :short %></time></div>
+              <div class="col">
+                <!--ログインしているユーザ以外には表示されない-->
+                <% if item.user == current_user %>
+                  <%= link_to "削除", post_path(item.id), method: :delete %>
+                <% end %>
+              </div>
+            </div>
+            <div><%= item.body %></div>
+            <div class="row">
+              <div class="col">
+                <!--コメントアイコンから詳細画面へ-->
+                <%= link_to post_path(item.id) do %>
+                  <i class="fa-regular fa-comment"></i>
+                <% end %>
+              </div>
+              <!--いいね機能-->
+              <div class="col">
+                <% if item.favorited_by?(current_user) %>
+              <p>
+                <%= link_to post_favorites_path(item), method: :delete do %>
+                  ♥<%= item.favorites.count %>
+                <% end %>
+              </p>
+              <% else %>
+              <p>
+                <%= link_to post_favorites_path(item), method: :post do %>
+                  ♡<%= item.favorites.count %>
+                <% end %>
+              </p>
+              <% end %>
+              </div>
+            </div>
           </div>
         </div>
-        <div><%= item.body %></div>
-        <div class="row">
-          <div class="col">
-            <%= link_to post_path(item.id) do %>
-              <i class="fa-regular fa-comment"></i>
-            <% end %>
-          </div>
-          <!--いいね機能-->
-          <div class="col">
-            <% if item.favorited_by?(current_user) %>
-          <p>
-            <%= link_to post_favorites_path(item), method: :delete do %>
-              ♥<%= item.favorites.count %>
-            <% end %>
-          </p>
-          <% else %>
-          <p>
-            <%= link_to post_favorites_path(item), method: :post do %>
-              ♡<%= item.favorites.count %>
-            <% end %>
-          </p>
-          <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
-  <% end %>
+      <% end %>
   <% end %>
 </div>
 

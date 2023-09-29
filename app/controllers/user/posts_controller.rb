@@ -4,7 +4,8 @@ class User::PostsController < ApplicationController
     # 皆の投稿表示画面
     @posts = Post.all
     @user = current_user
-    @posts = Post.published
+    # 公開された記事のみ表示
+    #@posts = Post.published
     
   end
   
@@ -28,6 +29,7 @@ class User::PostsController < ApplicationController
   
   def new
     # 新規投稿
+    @user = current_user
     @post = Post.new
   end
   
@@ -36,6 +38,7 @@ class User::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @user = current_user
     @comment = Comment.new
+    @post = Post.unpublished
   end
   
   def create
@@ -46,6 +49,7 @@ class User::PostsController < ApplicationController
     else
       render :new
     end
+    @post.is_published_flag = post_params[:is_published_flag]
   end
   
   def destroy

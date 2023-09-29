@@ -13,18 +13,25 @@
     
     <div class="row">
         <div class="col-2">
-          <%= image_tag current_user.image, size: "80x80" %>
+          <%#= image_tag @user.get_profile_image(200,200), size: "80x80" %>
         </div>
         <div>
-          <%= form_with model: @post do |f| %>
+          <%= form_with model: @post, url: '/posts', local: true do |f| %>
           <div class="row">
             <div class="col">
-              <%= f.label :is_published_flag, "公開", value: true %>
-              <%= f.radio_button :is_published_flag, 'true' %>
+              <!--公開・非公開の選択-->
+              <%#= f.select :is_published_flag, Post.is_published_flag.keys.to_a, {}, { class:'item-open' } %>
+              
+              <%= f.radio_button :is_published_flags, Post.is_published_flags.key(0) %>
+              <%= f.label :is_published_flag_published, Post.is_published_flags_i18n[:published] %>
+              <%#= f.label :is_published_flag, "公開" %>
+              <%#= f.radio_button :is_published_flag, 1 %>
             </div>
             <div class="col">
-              <%= f.label :is_published_flag, "非公開", value: false %>
-              <%= f.radio_button :is_published_flag, 'false' %>
+              <%= f.radio_button :is_published_flags, Post.is_published_flag.key(1) %>
+              <%= f.label :is_published_flag_unpublished, Post.is_published_flag_i18n[:unpublished] %>
+              <%#= f.label :is_published_flag, "非公開" %>
+              <%#= f.radio_button :is_published_flag, 0 %>
             </div>
           </div>
           <div class="col my-3"><%= f.text_area :body %></div>

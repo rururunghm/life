@@ -4,7 +4,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       
       t.integer :user_id, null: false
       t.string  :body, null: false
-      t.boolean :is_published_flag, null: false
+      t.integer :is_published_flag, null: false, default: 0
 
 
       t.timestamps

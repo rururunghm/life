@@ -1,4 +1,9 @@
 ja:
+  enums:
+    post:
+      is_published_flag:
+        published: "公開"
+        unpublished: "非公開"
   time:
     formats:
       default: "%Y/%m/%d %H:%M:%S"
