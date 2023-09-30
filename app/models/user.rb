@@ -15,13 +15,13 @@ class User < ApplicationRecord
   end
   
   has_one_attached :image
-  
+  #TODO: アソシエーション
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorited_posts, through: :favorites, source: :post
   has_many :comment_favorites, dependent: :destroy
-  
+  #TODO: バリデーション
   validates :name, presence: true
   validates :telephone_number, presence: true
   validates :email, presence: true
@@ -33,17 +33,22 @@ class User < ApplicationRecord
     end
     image.variant(resize_to_limit: [width, height]).processed
   end
-  
-  def self.search_for(content, method)
-    if method == 'perfect'
-      User.where(name: content)
-    elsif method == 'forward'
-      User.where('name LIKE ?', content + '%')
-    elsif method == 'backward'
-      User.where('name LIKE ?', '%' + content)
-    else
-      User.where('name LIKE ?', '%' + content + '%')
-    end
+  #TODO: selfはモデル名（メソッドが記述されているモデルを表す）
+  def self.search_for(content)
+    #TODO: 完全一致
+    #if method == 'perfect'
+      #Post.where(body: content)
+    #TODO: 前方一致
+    #elsif method == 'forward'
+      #Post.where('body LIKE ?', content+'%')
+    #TODO: 後方一致
+    #elsif method == 'backward'
+      #Post.where('body LIKE ?', '%'+content)
+    #else
+    #TODO: 部分一致
+    #TODO: LIKE句 カラム名、LIKE、？, 右にWord, 右のWordが？代入
+    #TODO: %は全ての文字
+    User.where('name LIKE ?', '%' + content + '%')
   end
   
 end

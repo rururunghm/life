@@ -1,7 +1,10 @@
+  <!---->
 <% if @model == 'user' %>
 	<h3>Users search for "<%= @content %>"</h3>
-  <%= render 'user/users/user'  %>
+	<!---->
+  <%= render 'user/users/search_user'  %>
 <% else %>
 	<h3>Posts search for "<%= @content %>"</h3>
-  <%= render 'user/posts/post' %>
+	<!---->
+  <%= render 'user/posts/search_post' %>
 <% end %>

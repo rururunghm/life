@@ -1,10 +1,13 @@
 <p id="notice"></p>
 <div class="container">
-  <% post.each do |item| %>
+  <div class="mb-4"><h2>Search</h2></div>
+  <%= @message %>
+  <% if @posts.present? %>
+  <% @posts.each do |item| %>
     <div class="row card-shadow w-75">
       <div class="col-2">
         <%= link_to post_path(item.id) do %>
-        <%= image_tag item.user.image, size: "80x80" %>
+        <%= image_tag item.user.image, size: "50x50" %>
         <% end %>
       </div>
       <div class="col-8">
@@ -26,5 +29,6 @@
         </div>
       </div>
     </div>
+  <% end %>
   <% end %>
 </div>

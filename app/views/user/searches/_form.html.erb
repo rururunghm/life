@@ -2,6 +2,7 @@
   <%= form_with url: user_search_path, method: :get, local: true do |f| %>
     <div class="col-auto">
       <div class="input-group">
+        <!--#TODO: content,modelがコントローラに送られる-->
         <%= f.text_field :content, class: "form-control" %>
         <%= f.select :model, options_for_select({ "ユーザー" => "user", "投稿" => "post" }), class: "form-control"  %>
         <div class="input-group-text">

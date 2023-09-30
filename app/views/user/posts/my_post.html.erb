@@ -6,7 +6,7 @@
     <% @post.each do |item| %>
       <div class="row card-shadow w-75">
         <div class="col-2">
-          <%= image_tag item.user.image, size: "80x80" %>
+          <%= image_tag item.user.get_profile_image(200,200), size: "80x80" %>
         </div>
         <div class="col-8">
           <div class="row">

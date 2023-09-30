@@ -1,78 +1,76 @@
 <p id="notice"></p>
 <div class="container">
-    <div class="row card-shadow w-75">
-        <div class="col-2">
-          <%= image_tag @user.get_profile_image(200,200), size: "80x80" %>
+  <div class="row card-shadow w-75">
+      <div class="col-2">
+        <%= image_tag @user.get_profile_image(200,200), size: "80x80" %>
+      </div>
+      <div class="col-8">
+        <div class="row">
+          <div class="col font-weight-bold"><%= @post.user.name %></div>
+          <div class="col"><time><%= l DateTime.current, format: :short %></time></div>
+          <div></div>
         </div>
-        <div class="col-8">
-          <div class="row">
-            <div class="col font-weight-bold"><%= @post.user.name %></div>
-            <div class="col"><time><%= l DateTime.current, format: :short %></time></div>
-            <div></div>
-          </div>
-            <div><%= @post.body %></div>
-            <!--いいね機能-->
-            <% if @post.favorited_by?(current_user) %>
-            <p>
-              <%= link_to post_favorites_path(@post), method: :delete do %>
-                ♥<%= @post.favorites.count %>
-              <% end %>
-            </p>
-            <% else %>
-            <p>
-              <%= link_to post_favorites_path(@post), method: :post do %>
-                ♡<%= @post.favorites.count %>
-              <% end %>
-            </p>
+          <div><%= @post.body %></div>
+          <!--投稿のいいね機能-->
+          <% if @post.favorited_by?(current_user) %>
+          <p>
+            <%= link_to post_favorites_path(@post), method: :delete do %>
+              ♥<%= @post.favorites.count %>
             <% end %>
-        </div>
+          </p>
+          <% else %>
+          <p>
+            <%= link_to post_favorites_path(@post), method: :post do %>
+              ♡<%= @post.favorites.count %>
+            <% end %>
+          </p>
+          <% end %>
       </div>
-      
-      <!--コメント-->
-      <div class="row card-shadow w-75">
-          <% @post.comments.each do |comment| %>
-            <div class="col-2">
-              <%= image_tag @user.get_profile_image(200,200), size: "80x80" %>
-            </div>
-            <div class="col-8">
-              <div class="row">
-                <div class="col font-weight-bold"><%= comment.user.name %></div>
-                <div class="col"><time><%= l DateTime.current, format: :short %></time></div>
-                <div class="col">
-                  <% if comment.user == current_user %>
-                    <%= link_to "削除", comment_path(comment, post_id: comment.post.id), method: :delete %>
-                  <% end %>
-                </div>
+    </div>
+    
+    <!--コメント表示-->
+    <% if @post.comments.present? %>
+    <div class="row card-shadow w-75">
+        <% @post.comments.each do |comment| %>
+          <div class="col-2">
+            <%= image_tag @user.get_profile_image(200,200), size: "80x80" %>
+          </div>
+          <div class="col-8">
+            <div class="row">
+              <div class="col font-weight-bold"><%= comment.user.name %></div>
+              <div class="col"><time><%= l DateTime.current, format: :short %></time></div>
+              <div class="col">
+                <% if comment.user == current_user %>
+                  <%= link_to "削除", comment_path(comment, post_id: comment.post.id), method: :delete %>
+                <% end %>
               </div>
-             
-              <div><%= comment.comment %></div>
-                  <% if comment.favorited_by?(current_user) %>
-                    <p>
-                      <%= link_to comment_favorite_path(comment), method: :delete do %>
-                        ♥<%= comment.comment_favorites.count %>
-                      <% end %>
-                    </p>
-                    <% else %>
-                    <p>
-                      <%= link_to  comment_comment_favorites_path(comment), method: :post do %>
-                        ♡<%=comment.comment_favorites.count %>
-                      <% end %>
-                    </p>
-                    <% end %>
-                  <% end %>
             </div>
-      </div>
+           <!--コメントのいいね-->
+            <div><%= comment.comment %></div>
+                <% if comment.favorited_by?(current_user) %>
+                  <p>
+                    <%= link_to comment_favorite_path(comment), method: :delete do %>
+                      ♥<%= comment.comment_favorites.count %>
+                    <% end %>
+                  </p>
+                  <% else %>
+                  <p>
+                    <%= link_to comment_comment_favorites_path(comment), method: :post do %>
+                      ♡<%=comment.comment_favorites.count %>
+                    <% end %>
+                  </p>
+                  <% end %>
+                <% end %>
+          </div>
+    </div>
+  <% end %>
+  </div>
+
+<!--コメント投稿-->
+<%= form_with model: [@post, @comment] do |f| %>
+<div class="col card-shadow w-75 ml-5">
+    <div class="col-2"></div>
+  <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", class: "mt-3" %>
+  <%= f.submit "送信する" %>
+<% end %>
 </div>
-
-    <!--コメント投稿-->
-
-    <%= form_with model: [@post, @comment] do |f| %>
-      <div class="col card-shadow w-75 ml-5">
-        <div class="col-2"></div>
-      <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", class: "mt-3" %>
-      <%= f.submit "送信する" %>
-      <% end %>
-      </div>
-  
-
-

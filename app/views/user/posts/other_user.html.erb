@@ -10,6 +10,7 @@
           <div class="col"><time><%= l DateTime.current, format: :short %></time></div>
           <div class="col"></div>
         </div>
+      <% if @users.present? %>
         <% @user.posts.each do |item| %>
         <div><%= item.body %></div>
         <div class="row">
@@ -35,6 +36,7 @@
           </div>
         </div>
         <% end %>
+      <% end %>
       </div>
     </div>
 </div>
