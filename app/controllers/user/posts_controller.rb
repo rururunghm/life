@@ -21,7 +21,7 @@ class User::PostsController < ApplicationController
   def other_user
     #TODO: ほかのユーザの投稿表示画面
     @user = User.find(params[:id])
-    @post = Post.published
+    @posts = @user.posts.published
   end
   
   def new
