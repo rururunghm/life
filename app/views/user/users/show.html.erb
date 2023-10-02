@@ -3,9 +3,9 @@
   <%= flash[:notice] %>
 </div>
 <div class="container">
-  <div class="row">
-    <div class="col-sm-2 text-center mb-4 ml-5"><h3>mypage</h3></div>
-    <div class="col">  
+  <div class="row justify-content-center">
+    <div class="col-sm-2"><h3>mypage</h3></div>
+    <div class="col-sm-2">  
       <% if current_user.name != "guestuser" %>
         <%= link_to user_information_edit_path, class: "btn btn-success" do %>
           <i class="fa-solid fa-user-gear" aria-hidden="true"></i>
@@ -13,7 +13,7 @@
       <% end %>
     </div>
   </div>
-  <div class="row justify-content-center">
+  <div class="row justify-content-center mt-4">
     <div class="w-100"></div>
     <div class="col-sm-2 bg-light border py-2">Image</div>
     <div class="col-sm-3 border py-2">

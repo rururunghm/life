@@ -47,13 +47,13 @@
               
             <% elsif admin_signed_in? %>
               <li class="nav-item">
-                <%= link_to "ユーザ",  admin_root_path, class: 'nav-link' %>
+                <%= link_to "ユーザ", admin_root_path, class: 'nav-link' %>
               </li>
               <li class="nav-item">
-                <%= link_to "コメント",  user_comment_admin_users_path, class: 'nav-link' %>
+                <%= link_to "コメント", admin_comments_path, class: 'nav-link' %>
               </li>
               <li class="nav-item">
-                <%= link_to "投稿", user_post_admin_users_path, class: 'nav-link' %>
+                <%= link_to "投稿", admin_posts_path, class: 'nav-link' %>
               </li>
               <li class="nav-item">
                 <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link' %>

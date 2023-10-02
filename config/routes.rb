@@ -15,12 +15,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: "users#index"
-    resources :users,only: [:index] do
-      collection do
-          get :user_post
-          get :user_comment
-      end 
-    end
+    resources :comments,only: [:index, :destroy] 
+    resources :posts,only: [:index, :destroy] 
+    resources :users,only: [:index]
   end
 
   scope module: :user do

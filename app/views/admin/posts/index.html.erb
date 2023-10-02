@@ -13,7 +13,7 @@
           <div class="col-sm font-weight-bold"><%= item.user.name %></div>
           <div class="col-sm"><time><%= l DateTime.current, format: :short %></time></div>
           <div class="col-sm">
-              <%= link_to "削除", post_path(item.id), method: :delete %>
+              <%= link_to "削除", admin_post_path(item.id), method: :delete %>
           </div>
         </div>
         <div><%= item.body %></div>
