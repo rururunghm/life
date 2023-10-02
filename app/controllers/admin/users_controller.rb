@@ -10,7 +10,12 @@ class Admin::UsersController < ApplicationController
   
   def user_comment
     @comment = Comment.all
-    #@user = current_user
+  end
+  
+  def destroy
+    post = Post.find(params[:id])
+    post.destroy
+    redirect_to user_post_admin_users_path
   end
   
 end

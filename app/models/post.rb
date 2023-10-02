@@ -14,6 +14,7 @@ class Post < ApplicationRecord
   validates :is_published_flag, presence: true
   
   #TODO: いいね機能
+  #TODO: ユーザidがFavoritesテーブル内に存在（exists?）するかどうかを調べる
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end

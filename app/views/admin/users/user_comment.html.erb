@@ -1,20 +1,23 @@
 <p id ="notice"></p>
 <div class="container">
-  <div class="row card-shadow w-75">
+  <h4 class="text-dark bg-light w-25 text-center mb-y">ユーザコメント一覧</h4>
+  <% if @comment.present? %>
     <% @comment.each do |comment| %>
-      <div class="col-2">
-        <%= image_tag comment.user.get_profile_image(200,200), size: "80x80" %>
-      </div>
-      <div class="col-8">
-        <div class="row">
-          <div class="col font-weight-bold"><%= comment.user.name %></div>
-          <div class="col"><time><%= l DateTime.current, format: :short %></time></div>
-          <div class="col">
-              <%= link_to "削除", comment_path(comment, post_id: comment.post.id), method: :delete %>
-          </div>
+      <div class="row card-shadow w-75">
+        <div class="col-sm-2">
+          <%= image_tag comment.user.get_profile_image(200,200), size: "80x80" %>
         </div>
-          <div class="mt-2"><%= comment.comment %></div>
+        <div class="col-8">
+          <div class="row">
+            <div class="col-sm font-weight-bold"><%= comment.user.name %></div>
+            <div class="col-sm"><time><%= l DateTime.current, format: :short %></time></div>
+            <div class="col-sm">
+                <%= link_to "削除", comment_path(comment, post_id: comment.post.id), method: :delete %>
+            </div>
+          </div>
+            <div class="mt-2"><%= comment.comment %></div>
+        </div>
       </div>
     <% end %>
-  </div>
+  <% end %>  
 </div>

@@ -70,7 +70,7 @@ class User::PostsController < ApplicationController
   def ensure_correct_user
     @post = Post.find(params[:id])
     unless @post.user == current_user
-      redirect_to posts_path
+      redirect_to posts_path 
     end
   end
   

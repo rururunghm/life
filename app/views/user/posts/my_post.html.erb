@@ -1,8 +1,6 @@
 <p id="notice"></p>
 <div class="container">
 <div class="mb-4 "><h2>My post</h2></div>
-  <%#= render 'tem_post', post: @post %>
-  <%#if current_user.id == @post.id %>
     <% @post.each do |item| %>
       <div class="row card-shadow w-75">
         <div class="col-2">
@@ -41,8 +39,4 @@
         </div>
       </div>
     <% end %>
-    
-  <%# end %>
-  
-  
 </div>
