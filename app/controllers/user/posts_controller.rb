@@ -1,5 +1,7 @@
 class User::PostsController < ApplicationController
   
+  before_action :authenticate_user!
+  
   def index
     #TODO: 皆の投稿表示画面
     @posts = Post.all
@@ -33,6 +35,7 @@ class User::PostsController < ApplicationController
   def show
     #TODO: コメント投稿画面・投稿詳細画面
     @post = Post.find(params[:id])
+    @user_tag = User.find(params[:id])
     @user = current_user
     @comment = Comment.new
     @posts = Post.published
